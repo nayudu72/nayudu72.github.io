@@ -366,11 +366,15 @@
           <p class="section-lead">Open to leadership roles, advisory engagements, and strategic discussions in infrastructure and cybersecurity.</p>
         </header>
         <div class="contact-panel reveal">
-          <a href="mailto:nayudu72y@gmail.com" class="contact-row" target="_blank" rel="noopener noreferrer">
+          <form class="contact-row contact-row--msg" id="contact-form" novalidate>
             <span class="contact-icon" aria-hidden="true">✉</span>
-            <span class="contact-label">Email</span>
-            <span class="contact-value">nayudu72y@gmail.com</span>
-          </a>
+            <div class="contact-form-body">
+              <p class="contact-label">Send a message</p>
+              <input type="text" name="name" placeholder="Your name" class="contact-input" required autocomplete="name">
+              <textarea name="message" placeholder="Short message…" rows="2" class="contact-input contact-input--ta" required></textarea>
+              <button type="submit" class="contact-send-btn">Send →</button>
+            </div>
+          </form>
           <a href="tel:+919845386960" class="contact-row" target="_blank" rel="noopener noreferrer">
             <span class="contact-icon" aria-hidden="true">☎</span>
             <span class="contact-label">Phone</span>

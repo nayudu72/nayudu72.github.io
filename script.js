@@ -169,6 +169,19 @@
     });
   });
 
+  /* Contact form — build mailto: from name + message */
+  var contactForm = document.getElementById('contact-form');
+  contactForm?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = (contactForm.querySelector('[name="name"]').value || '').trim();
+    var message = (contactForm.querySelector('[name="message"]').value || '').trim();
+    if (!name || !message) return;
+    var subject = encodeURIComponent('Portfolio enquiry from ' + name);
+    var body = encodeURIComponent(message + '\n\n— ' + name);
+    window.location.href = 'mailto:nayudu72y@gmail.com?subject=' + subject + '&body=' + body;
+    contactForm.reset();
+  });
+
   /* Smooth scroll for all internal anchor links */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
