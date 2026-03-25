@@ -169,17 +169,50 @@
     });
   });
 
-  /* Contact form — build mailto: from name + message */
+  /* Message modal */
+  var msgOverlay  = document.getElementById('msg-overlay');
+  var openMsgBtn  = document.getElementById('open-msg-modal');
+  var msgClose    = document.getElementById('msg-close');
+  var msgCancel   = document.getElementById('msg-cancel');
   var contactForm = document.getElementById('contact-form');
+
+  function openModal() {
+    msgOverlay.classList.add('is-open');
+    msgOverlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    contactForm?.querySelector('input')?.focus();
+  }
+
+  function closeModal() {
+    msgOverlay.classList.remove('is-open');
+    msgOverlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    openMsgBtn?.focus();
+  }
+
+  openMsgBtn?.addEventListener('click', openModal);
+  msgClose?.addEventListener('click', closeModal);
+  msgCancel?.addEventListener('click', closeModal);
+
+  msgOverlay?.addEventListener('click', function (e) {
+    if (e.target === msgOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && msgOverlay.classList.contains('is-open')) closeModal();
+  });
+
   contactForm?.addEventListener('submit', function (e) {
     e.preventDefault();
-    var name = (contactForm.querySelector('[name="name"]').value || '').trim();
+    var name    = (contactForm.querySelector('[name="name"]').value    || '').trim();
+    var subject = (contactForm.querySelector('[name="subject"]').value || '').trim();
     var message = (contactForm.querySelector('[name="message"]').value || '').trim();
     if (!name || !message) return;
-    var subject = encodeURIComponent('Portfolio enquiry from ' + name);
+    var sub  = encodeURIComponent(subject || 'Message from ' + name);
     var body = encodeURIComponent(message + '\n\n— ' + name);
-    window.location.href = 'mailto:nayudu72y@gmail.com?subject=' + subject + '&body=' + body;
+    window.location.href = 'mailto:nayudu72y@gmail.com?subject=' + sub + '&body=' + body;
     contactForm.reset();
+    closeModal();
   });
 
   /* Smooth scroll for all internal anchor links */
