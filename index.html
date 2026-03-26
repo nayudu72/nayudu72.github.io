@@ -433,17 +433,9 @@
               <span id="cf-err-txt">Something went wrong. Please email directly.</span>
             </div>
 
-            <!--
-              WEB3FORMS SETUP (free — 250 emails/month):
-              1. Go to https://web3forms.com
-              2. Enter nayudu72y@gmail.com → click "Create Access Key"
-              3. Copy the key and replace YOUR_WEB3FORMS_ACCESS_KEY below
-            -->
             <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
               <input type="hidden" name="access_key" value="e1bd2ce7-66df-425b-9627-5a289a281ae8">
-              <input type="hidden" name="from_name" value="Portfolio Website">
-              <input type="hidden" name="redirect" value="false">
-              <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+              <input type="checkbox" name="botcheck" style="display:none;visibility:hidden;position:absolute" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="ff-row">
                 <div class="ff">

@@ -195,11 +195,20 @@
     msgShow(cfOk, false); msgShow(cfErr, false);
     if (!validate()) return;
 
+    /* Fill subject default if blank */
+    var subEl  = form.querySelector('[name="subject"]');
+    var nameEl = form.querySelector('[name="name"]');
+    if (subEl && !subEl.value.trim()) {
+      subEl.value = 'Message from ' + ((nameEl && nameEl.value.trim()) || 'visitor');
+    }
+
     setLoading(true);
+
+    var fd = new FormData(form);
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: new FormData(form)
+      body: fd
     })
       .then(function (r) { return r.json(); })
       .then(function (data) {
@@ -208,12 +217,12 @@
           form.reset();
           setTimeout(function () { msgShow(cfOk, false); }, 7000);
         } else {
-          if (cfErrTxt) cfErrTxt.textContent = data.message || 'Something went wrong. Please try again.';
+          if (cfErrTxt) cfErrTxt.textContent = data.message || 'Submission failed. Please email nayudu72y@gmail.com directly.';
           msgShow(cfErr, true);
         }
       })
       .catch(function () {
-        /* AJAX failed — fall back to native form POST */
+        /* Network/CORS error — fall back to native POST */
         form.submit();
       })
       .finally(function () { setLoading(false); });
