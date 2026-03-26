@@ -3,29 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>N. Ramachandra — IT Leadership · Cybersecurity · Compliance</title>
+  <title>N. Ramachandra — Program Manager · IT Leadership · Cybersecurity</title>
   <meta name="description" content="24+ years global IT leadership — enterprise infrastructure, cybersecurity, ITIL, CISSP, CISA, PMP. Program Manager & infrastructure executive.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to content</a>
   <div class="scroll-bar" id="scroll-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 
-  <!-- ═══════════ HEADER ═══════════ -->
+  <!-- HEADER -->
   <header class="header" id="header">
     <div class="hd-inner">
       <a href="#hero" class="logo" aria-label="N. Ramachandra — home">
         <span class="logo-mark">NR</span>
         <span class="logo-name">N. Ramachandra</span>
       </a>
-
       <button class="nav-burger" id="nav-burger" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
         <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
-
       <nav class="nav" id="primary-nav" aria-label="Primary">
         <a href="#about"          class="nl" data-s="about">Profile</a>
         <a href="#competencies"   class="nl" data-s="competencies">Expertise</a>
@@ -35,7 +33,6 @@
         <a href="#contact"        class="nl" data-s="contact">Contact</a>
         <a href="Ramachandra_Latest.pdf" class="nl nl--cta" download="Ramachandra_Latest.pdf" target="_blank" rel="noopener">Download CV</a>
       </nav>
-
       <button class="theme-btn" id="theme-btn" aria-label="Toggle theme">
         <svg class="ti ti-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <svg class="ti ti-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -46,404 +43,435 @@
 
   <main id="main">
 
-    <!-- ═══════════ HERO ═══════════ -->
+    <!-- ═══ HERO ═══ -->
     <section id="hero" class="hero" aria-labelledby="hero-name">
-      <!-- Animated background -->
-      <div class="hero-bg" aria-hidden="true">
-        <div class="hb-grid"></div>
-        <div class="hb-orb hb-orb--1"></div>
-        <div class="hb-orb hb-orb--2"></div>
-        <div class="hb-orb hb-orb--3"></div>
-      </div>
+      <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-noise" aria-hidden="true"></div>
 
       <div class="hero-inner container">
-        <!-- Left: editorial copy -->
-        <div class="hero-copy" id="hero-copy">
-          <p class="eyebrow hero-ey load-1">ITIL · PMP · AWS · CISSP · CISA</p>
+        <div class="hero-copy">
+          <div class="hero-badges load-1">
+            <span class="badge">CISSP</span>
+            <span class="badge">CISA</span>
+            <span class="badge">PMP</span>
+            <span class="badge">ITIL Expert</span>
+            <span class="badge">AWS SA</span>
+          </div>
           <h1 class="hero-name load-2" id="hero-name">
-            <span class="hn-line">N.</span>
-            <span class="hn-line hn-line--indent">Ramachandra</span>
+            <span class="hn-first">N.</span>
+            <span class="hn-last">Ramachandra</span>
           </h1>
-          <p class="hero-degrees load-3">B.Tech · LL.B. · LL.M. · M.Sc. Cybersecurity <span class="nw">(University of London)</span></p>
-          <p class="hero-tagline load-4">Program Manager &amp; Global IT Executive<br>Infrastructure · Cybersecurity · Compliance</p>
+          <p class="hero-role load-3">Program Manager · Global IT Executive</p>
+          <p class="hero-sub load-4">
+            Infrastructure · Cybersecurity · Compliance<br>
+            <em>M.Sc. Cybersecurity, University of London</em>
+          </p>
 
-          <div class="hero-stats load-5" aria-label="Career highlights">
+          <div class="hero-stats load-5">
             <div class="hs-item">
-              <strong>24+</strong><span>yrs leadership</span>
+              <div class="hs-num"><strong class="stat-counter" data-target="24">0</strong><sup>+</sup></div>
+              <span>Years</span>
             </div>
-            <div class="hs-sep" aria-hidden="true">|</div>
+            <div class="hs-sep" aria-hidden="true"></div>
             <div class="hs-item">
-              <strong>40K+</strong><span>global users</span>
+              <div class="hs-num"><strong class="stat-counter" data-target="40">0</strong><sup>K+</sup></div>
+              <span>Users</span>
             </div>
-            <div class="hs-sep" aria-hidden="true">|</div>
+            <div class="hs-sep" aria-hidden="true"></div>
             <div class="hs-item">
-              <strong>150+</strong><span>applications</span>
+              <div class="hs-num"><strong class="stat-counter" data-target="150">0</strong><sup>+</sup></div>
+              <span>Apps</span>
             </div>
-            <div class="hs-sep" aria-hidden="true">|</div>
+            <div class="hs-sep" aria-hidden="true"></div>
             <div class="hs-item">
-              <strong>14+</strong><span>certifications</span>
+              <div class="hs-num"><strong class="stat-counter" data-target="14">0</strong><sup>+</sup></div>
+              <span>Certs</span>
             </div>
           </div>
 
           <div class="hero-actions load-6">
-            <a href="#about" class="btn btn-primary">View profile</a>
+            <a href="#about" class="btn btn-primary">View Profile</a>
             <a href="Ramachandra_Latest.pdf" class="btn btn-outline" download="Ramachandra_Latest.pdf" target="_blank" rel="noopener">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download CV
+              Resume
             </a>
-            <a href="https://www.linkedin.com/in/nayudu/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.linkedin.com/in/nayudu/" class="btn btn-ghost" target="_blank" rel="noopener noreferrer">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
           </div>
         </div>
 
-        <!-- Right: profile photo with ambient glow -->
-        <div class="hero-photo-wrap load-7" id="hero-photo-wrap">
+        <!-- Profile photo with ambient gradient ring -->
+        <!-- To use a real photo, the <img src="profile.png"> tag below is already set. Swap profile.png with your image file. -->
+        <div class="hero-visual load-7">
           <div class="photo-aura" aria-hidden="true"></div>
-          <div class="photo-ring photo-ring--2" aria-hidden="true"></div>
-          <div class="photo-ring photo-ring--1" aria-hidden="true"></div>
+          <div class="photo-ring" aria-hidden="true"></div>
           <div class="hero-photo">
-            <img src="profile.png" alt="N. Ramachandra" class="photo-img">
+            <img src="profile.png" alt="N. Ramachandra — profile photo" class="photo-img">
           </div>
+          <div class="photo-orb photo-orb--1" aria-hidden="true"></div>
+          <div class="photo-orb photo-orb--2" aria-hidden="true"></div>
         </div>
       </div>
 
-      <div class="hero-scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <div class="scroll-line"></div>
-      </div>
+      <a href="#about" class="hero-scroll-cue" aria-label="Scroll to profile">
+        <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      </a>
     </section>
 
-    <!-- ═══════════ ABOUT / PROFILE ═══════════ -->
-    <section id="about" class="section sec-about" aria-labelledby="about-h">
+    <!-- ═══ ABOUT ═══ -->
+    <section id="about" class="section" aria-labelledby="about-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">01</span>
-          <p class="eyebrow" id="about-h">About</p>
-          <h2 class="sec-title">Profile</h2>
+          <div>
+            <p class="eyebrow" id="about-h">About</p>
+            <h2 class="sec-title">Profile Overview</h2>
+          </div>
         </div>
         <div class="about-grid">
-          <div class="about-facts reveal">
-            <div class="af-card">
-              <span class="af-label">Focus</span>
-              <span class="af-val">Infrastructure · Security · ITSM</span>
-            </div>
-            <div class="af-card">
-              <span class="af-label">Regions</span>
-              <span class="af-val">Global delivery</span>
-            </div>
-            <div class="af-card">
-              <span class="af-label">Industries</span>
-              <span class="af-val">Finance · HR · Enterprise IT</span>
-            </div>
-            <div class="af-card af-card--status">
-              <span class="status-dot" aria-hidden="true"></span>
-              <span class="af-val">Open to leadership roles</span>
-            </div>
-          </div>
-          <div class="about-body reveal rd-1">
-            <p class="about-lead">
-              24+ years of global IT leadership managing enterprise infrastructure for <strong>40,000+ users</strong> and <strong>150+ applications</strong>, including <strong>40 mission-critical systems</strong> in finance and HR.
-            </p>
-            <p>Academic depth: B.E., LL.B., LL.M., and M.Sc. Cybersecurity (University of London), complemented by <strong>CISSP</strong>, <strong>CISA</strong>, <strong>PMP</strong>, Scrum Master, <strong>ITIL Expert</strong>, and <strong>AWS Solutions Architect</strong>. CISA-certified audits and testing support for stock and commodity brokers.</p>
-            <ul class="pillars">
-              <li><strong>Platforms</strong> Data center &amp; cloud (AWS, GCP), VMware &amp; hypervisors, Unix/Windows, DR (RTO/RPO)</li>
-              <li><strong>Security</strong> SIEM (Splunk), IAM, zero trust &amp; segmentation, vulnerability &amp; incident response</li>
-              <li><strong>Leadership</strong> Tier-3 escalations, CAB/RCA governance, SLA/KPIs, cross-functional BC/DR</li>
-              <li><strong>Innovation</strong> AI/ML tools, prompt engineering, agentic workflows in operations</li>
+          <div class="about-body reveal">
+            <p class="about-lead">24+ years orchestrating global IT operations for <strong>40,000+ users</strong> across <strong>150+ applications</strong> — including 40 mission-critical finance and HR systems — for world-class enterprises.</p>
+            <p>Armed with an uncommon blend of technical depth and legal acumen (B.E., LL.B., LL.M., M.Sc. Cybersecurity), I bridge complex enterprise infrastructure and boardroom-level risk governance.</p>
+            <p>CISA-certified audit and testing support for stock and commodity brokers. Proven delivery across <strong>AWS / GCP / hybrid cloud</strong>, VMware estates, SIEM/Splunk security operations, and ITIL-driven service excellence.</p>
+            <ul class="about-pillars">
+              <li>
+                <span class="pillar-icon" aria-hidden="true">🔒</span>
+                <span><strong>Security &amp; GRC</strong> — SIEM/Splunk, ISO 27001, NIST, GDPR, IAM, zero-trust architecture</span>
+              </li>
+              <li>
+                <span class="pillar-icon" aria-hidden="true">☁️</span>
+                <span><strong>Cloud &amp; Infrastructure</strong> — AWS/GCP/hybrid, VMware, 20+ PB SAN/NAS storage estates</span>
+              </li>
+              <li>
+                <span class="pillar-icon" aria-hidden="true">⚙️</span>
+                <span><strong>ITSM &amp; Governance</strong> — ITIL Expert, CAB, ServiceNow, SLA/KPI management, BC/DR</span>
+              </li>
+              <li>
+                <span class="pillar-icon" aria-hidden="true">⚖️</span>
+                <span><strong>Legal &amp; Compliance</strong> — LL.B./LL.M., IPR, regulatory audit, executive reporting</span>
+              </li>
             </ul>
           </div>
-        </div>
-
-        <!-- Value props -->
-        <div class="value-row">
-          <article class="vc reveal">
-            <div class="vc-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <div class="about-sidebar reveal rd-1">
+            <div class="sb-card">
+              <span class="sb-label">Current status</span>
+              <div class="sb-val status-active">
+                <span class="status-dot" aria-hidden="true"></span>Open to leadership roles
+              </div>
             </div>
-            <h3>Risk &amp; compliance</h3>
-            <p>CISA-led audits for capital market intermediaries; ISO 27001, NIST, and GDPR-aligned controls; SOC oversight, SIEM (Splunk), IAM/RBAC, and penetration testing coordination.</p>
-          </article>
-          <article class="vc reveal rd-1">
-            <div class="vc-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            <div class="sb-card">
+              <span class="sb-label">Focus areas</span>
+              <span class="sb-val">Infrastructure · Security · ITSM</span>
             </div>
-            <h3>Operational excellence</h3>
-            <p>ITIL Expert-level change &amp; problem management: CAB approval, 5 Whys RCA, KEDB, CSI from incident data. SLA/KPI governance and BC/DR with validated RTO/RPO.</p>
-          </article>
-          <article class="vc reveal rd-2">
-            <div class="vc-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            <div class="sb-card">
+              <span class="sb-label">Delivery scope</span>
+              <span class="sb-val">Global enterprise</span>
             </div>
-            <h3>Scale &amp; modernization</h3>
-            <p>Global teams and multi-petabyte estates; VMware, hybrid cloud, automation (Ansible), observability (ScienceLogic, Dynatrace), and AI/ML tools in daily workflows.</p>
-          </article>
+            <div class="sb-card">
+              <span class="sb-label">Industries</span>
+              <span class="sb-val">Finance · HR · Enterprise IT</span>
+            </div>
+            <div class="sb-card">
+              <span class="sb-label">Email</span>
+              <a href="mailto:nayudu72y@gmail.com" class="sb-val sb-link">nayudu72y@gmail.com</a>
+            </div>
+            <div class="sb-card">
+              <span class="sb-label">Phone</span>
+              <a href="tel:+919845386960" class="sb-val sb-link">+91 98453 86960</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ COMPETENCIES ═══════════ -->
-    <section id="competencies" class="section sec-comp" aria-labelledby="comp-h">
+    <!-- ═══ COMPETENCIES ═══ -->
+    <section id="competencies" class="section sec-alt" aria-labelledby="comp-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">02</span>
-          <p class="eyebrow" id="comp-h">Capabilities</p>
-          <h2 class="sec-title">Core competencies</h2>
-          <p class="sec-lead">Grouped by how I deliver outcomes for enterprise stakeholders.</p>
+          <div>
+            <p class="eyebrow" id="comp-h">Expertise</p>
+            <h2 class="sec-title">Core Competencies</h2>
+          </div>
         </div>
         <div class="comp-grid">
-          <article class="cc reveal">
-            <span class="cc-n" aria-hidden="true">01</span>
-            <h3 class="cc-title">Cloud &amp; infrastructure</h3>
+          <article class="comp-card reveal">
+            <div class="cc-icon cc-icon--1" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="m7 8 2 2 4-4"/></svg>
+            </div>
+            <span class="cc-num" aria-hidden="true">01</span>
+            <h3>Cloud &amp; Infrastructure</h3>
             <ul class="cc-list">
-              <li>AWS, GCP, hybrid &amp; hardened configurations</li>
-              <li>VMware vSphere, Hyper-V, virtualization strategy</li>
-              <li>SAN/NAS (EMC/VMAX, NetApp), compute &amp; storage</li>
-              <li>Backup: NetBackup, Veeam, cloud DR targets</li>
+              <li>AWS / GCP / Hybrid Cloud architecture</li>
+              <li>VMware vSphere / Hyper-V virtualisation</li>
+              <li>SAN/NAS — EMC VMAX, NetApp (20+ PB)</li>
+              <li>NetBackup / Veeam backup &amp; DR</li>
+              <li>Unix / Windows / Active Directory</li>
             </ul>
           </article>
-          <article class="cc reveal rd-1">
-            <span class="cc-n" aria-hidden="true">02</span>
-            <h3 class="cc-title">Security &amp; GRC</h3>
+          <article class="comp-card reveal rd-1">
+            <div class="cc-icon cc-icon--2" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <span class="cc-num" aria-hidden="true">02</span>
+            <h3>Security &amp; GRC</h3>
             <ul class="cc-list">
-              <li>SOC, threat detection, Splunk SIEM &amp; log correlation</li>
-              <li>ISO 27001, NIST, GDPR; risk assessments &amp; audits</li>
-              <li>IAM, RBAC, encryption (AES, IPsec)</li>
-              <li>Pen testing, red team exercises, awareness programs</li>
+              <li>SOC / Splunk SIEM / threat detection</li>
+              <li>ISO 27001 / NIST / GDPR compliance</li>
+              <li>IAM / RBAC / encryption / zero-trust</li>
+              <li>CISA audit &amp; penetration testing</li>
+              <li>Vulnerability mgmt &amp; incident response</li>
             </ul>
           </article>
-          <article class="cc reveal rd-2">
-            <span class="cc-n" aria-hidden="true">03</span>
-            <h3 class="cc-title">ITSM &amp; operations</h3>
+          <article class="comp-card reveal rd-2">
+            <div class="cc-icon cc-icon--3" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <span class="cc-num" aria-hidden="true">03</span>
+            <h3>ITSM &amp; Operations</h3>
             <ul class="cc-list">
-              <li>ServiceNow, JIRA, ITIL processes end-to-end</li>
-              <li>Change: Standard / Normal / Emergency &amp; CAB</li>
-              <li>Problem: 5 Whys, KEDB, recurrence reduction</li>
-              <li>Monitoring: ScienceLogic, Dynatrace, capacity reporting</li>
+              <li>ServiceNow / JIRA / ITIL Expert</li>
+              <li>CAB / Change mgmt / 5-Whys RCA</li>
+              <li>ScienceLogic / Dynatrace monitoring</li>
+              <li>SLA / OLA / KPI governance</li>
+              <li>Ansible automation / AI/ML in ops</li>
             </ul>
           </article>
-          <article class="cc reveal rd-3">
-            <span class="cc-n" aria-hidden="true">04</span>
-            <h3 class="cc-title">Leadership &amp; legal lens</h3>
+          <article class="comp-card reveal rd-3">
+            <div class="cc-icon cc-icon--4" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="cc-num" aria-hidden="true">04</span>
+            <h3>Leadership &amp; Legal</h3>
             <ul class="cc-list">
-              <li>Teams up to ~30; global customer relationships</li>
-              <li>Resource planning, hiring, appraisals with HR</li>
-              <li>LL.B. / LL.M. — IPR, compliance &amp; DPO alignment</li>
-              <li>Executive reporting &amp; stakeholder governance</li>
+              <li>Teams of ~30, global delivery</li>
+              <li>LL.B. / LL.M. / IPR expertise</li>
+              <li>Executive &amp; board-level reporting</li>
+              <li>BC/DR planning &amp; governance</li>
+              <li>Vendor / contract management</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ EXPERIENCE ═══════════ -->
-    <section id="experience" class="section sec-exp" aria-labelledby="exp-h">
+    <!-- ═══ EXPERIENCE ═══ -->
+    <section id="experience" class="section" aria-labelledby="exp-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">03</span>
-          <p class="eyebrow" id="exp-h">Career</p>
-          <h2 class="sec-title">Experience</h2>
+          <div>
+            <p class="eyebrow" id="exp-h">Career</p>
+            <h2 class="sec-title">Experience</h2>
+          </div>
         </div>
         <div class="timeline">
-
-          <article class="te reveal">
-            <div class="te-dot" aria-hidden="true"></div>
-            <div class="te-card">
-              <div class="te-head">
-                <div>
-                  <h3 class="te-role">Program Manager</h3>
-                  <p class="te-org">Capgemini</p>
-                </div>
-                <time class="te-time" datetime="2022-04/2025-05">Apr 2022 – May 2025</time>
+          <article class="tl-item reveal">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-card">
+              <div class="tl-meta">
+                <span class="tl-company">Capgemini</span>
+                <span class="tl-period">Apr 2022 – May 2025</span>
               </div>
-              <div class="te-tags">
-                <span>40K+ users</span><span>ITIL</span><span>Splunk</span><span>AWS</span><span>GCP</span><span>ISO 27001</span>
-              </div>
-              <ul class="te-bullets">
-                <li>Global IT infrastructure: compute, storage, network; Tier-3 escalations, RCA, patch management (Windows/Linux).</li>
-                <li>Change &amp; problem management, CAB, KEDB, CSI; ScienceLogic &amp; Dynatrace; BC/DR and KPI governance.</li>
-                <li>Enterprise cybersecurity, SOC, IAM, multi-cloud hardening, pen tests &amp; red team; phishing awareness (−40%+ susceptibility).</li>
+              <h3 class="tl-role">Program Manager</h3>
+              <ul class="tl-points">
+                <li>Led enterprise IT service delivery for <strong>40,000+ users</strong> across global operations</li>
+                <li>Architected ITIL-aligned service management; drove Splunk-based SOC operations</li>
+                <li>Spearheaded AWS and GCP cloud migration with ISO 27001 compliance throughout</li>
+                <li>Maintained SLA excellence &gt;99.9% uptime across mission-critical finance &amp; HR platforms</li>
               </ul>
+              <div class="tl-tags">
+                <span>ITIL</span><span>Splunk</span><span>AWS</span><span>GCP</span><span>ISO 27001</span>
+              </div>
             </div>
           </article>
-
-          <article class="te reveal">
-            <div class="te-dot" aria-hidden="true"></div>
-            <div class="te-card">
-              <div class="te-head">
-                <div>
-                  <h3 class="te-role">IT Service Delivery — Infrastructure Manager</h3>
-                  <p class="te-org">DXC Technology</p>
-                </div>
-                <time class="te-time" datetime="2003-10/2021-01">Oct 2003 – Jan 2021</time>
+          <article class="tl-item reveal rd-1">
+            <div class="tl-dot" aria-hidden="true"></div>
+            <div class="tl-card">
+              <div class="tl-meta">
+                <span class="tl-company">DXC Technology</span>
+                <span class="tl-period">Oct 2003 – Jan 2021</span>
               </div>
-              <div class="te-tags">
-                <span>30-person team</span><span>20+ PB</span><span>ServiceNow</span><span>VMware</span><span>Ansible</span>
-              </div>
-              <ul class="te-bullets">
-                <li>SLA-led service delivery; ~30 FTEs; 25 customers, 8,000+ servers, 20+ PB data.</li>
-                <li>NetBackup, Veeam, EMC/NetApp, VMware/Hyper-V; AWS hybrid; Ansible automation; Splunk.</li>
-                <li>CMDB, capacity &amp; cost optimization, DR/BCP drills, CAB &amp; problem management.</li>
+              <h3 class="tl-role">IT Service Delivery Infrastructure Manager</h3>
+              <ul class="tl-points">
+                <li>Managed team of <strong>30 FTEs</strong> delivering infrastructure across 20+ PB storage environments</li>
+                <li>Orchestrated VMware vSphere, Hyper-V, and Ansible automation for 150+ applications</li>
+                <li>Implemented ServiceNow ITSM; governed change management via CAB and KEDB</li>
+                <li>Delivered BC/DR strategies with validated RTO/RPO across finance-critical workloads</li>
               </ul>
-            </div>
-          </article>
-
-          <article class="te reveal">
-            <div class="te-dot" aria-hidden="true"></div>
-            <div class="te-card te-card--sm">
-              <div class="te-head">
-                <div>
-                  <h3 class="te-role">Senior Training Officer</h3>
-                  <p class="te-org">Nettur Technical Training Foundation</p>
-                </div>
-                <time class="te-time">Oct 2000 – Mar 2002</time>
+              <div class="tl-tags">
+                <span>ServiceNow</span><span>VMware</span><span>Ansible</span><span>NetBackup</span><span>EMC/NetApp</span>
               </div>
-              <p class="te-summary">Electronics &amp; CS training; labs, robotics/sensors, manuals &amp; assessments.</p>
             </div>
           </article>
-
-          <article class="te reveal">
-            <div class="te-dot" aria-hidden="true"></div>
-            <div class="te-card te-card--sm">
-              <div class="te-head">
-                <div>
-                  <h3 class="te-role">Computer Science Lecturer</h3>
-                  <p class="te-org">Smt. Kamala Bai Polytechnic</p>
-                </div>
-                <time class="te-time">Sep 2000 – Mar 2002</time>
+          <article class="tl-item reveal rd-2">
+            <div class="tl-dot tl-dot--sm" aria-hidden="true"></div>
+            <div class="tl-card tl-card--minor">
+              <div class="tl-meta">
+                <span class="tl-company">Nettur Technical Training Foundation</span>
+                <span class="tl-period">Oct 2000 – Mar 2002</span>
               </div>
-              <p class="te-summary">Diploma CS: programming, DS, OS, networking; labs &amp; career mentoring.</p>
+              <h3 class="tl-role">Senior Training Officer</h3>
             </div>
           </article>
-
-          <article class="te reveal">
-            <div class="te-dot" aria-hidden="true"></div>
-            <div class="te-card te-card--sm">
-              <div class="te-head">
-                <div>
-                  <h3 class="te-role">Lecturer — CS &amp; Electronics</h3>
-                  <p class="te-org">SJES Polytechnic</p>
-                </div>
-                <time class="te-time">Aug 1996 – Jun 1997</time>
+          <article class="tl-item reveal rd-2">
+            <div class="tl-dot tl-dot--sm" aria-hidden="true"></div>
+            <div class="tl-card tl-card--minor">
+              <div class="tl-meta">
+                <span class="tl-company">Smt. Kamala Bai Polytechnic</span>
+                <span class="tl-period">Sep 2000 – Mar 2002</span>
               </div>
-              <p class="te-summary">Programming, digital logic, circuits; microcontroller labs.</p>
+              <h3 class="tl-role">CS Lecturer</h3>
             </div>
           </article>
-
+          <article class="tl-item reveal rd-2">
+            <div class="tl-dot tl-dot--sm" aria-hidden="true"></div>
+            <div class="tl-card tl-card--minor">
+              <div class="tl-meta">
+                <span class="tl-company">SJES Polytechnic</span>
+                <span class="tl-period">Aug 1996 – Jun 1997</span>
+              </div>
+              <h3 class="tl-role">Lecturer</h3>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ EDUCATION ═══════════ -->
-    <section id="education" class="section sec-edu" aria-labelledby="edu-h">
+    <!-- ═══ EDUCATION ═══ -->
+    <section id="education" class="section sec-alt" aria-labelledby="edu-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">04</span>
-          <p class="eyebrow" id="edu-h">Academic</p>
-          <h2 class="sec-title">Education</h2>
+          <div>
+            <p class="eyebrow" id="edu-h">Academic</p>
+            <h2 class="sec-title">Education</h2>
+          </div>
         </div>
         <div class="edu-grid">
-          <article class="eg reveal">
-            <div class="eg-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="eg-degree">M.Sc. Cyber Security</h3>
-            <p class="eg-school">University of London</p>
-            <p class="eg-years">Oct 2024 – Oct 2026</p>
+          <article class="edu-card reveal">
+            <span class="edu-year">2024 – 2026</span>
+            <h3 class="edu-degree">M.Sc. Cyber Security</h3>
+            <p class="edu-school">University of London</p>
+            <span class="edu-badge">In Progress</span>
           </article>
-          <article class="eg reveal rd-1">
-            <div class="eg-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="eg-degree">LL.M. — Constitutional Law</h3>
-            <p class="eg-school">KLE College of Law</p>
-            <p class="eg-years">2019 – 2021</p>
+          <article class="edu-card reveal rd-1">
+            <span class="edu-year">2019 – 2021</span>
+            <h3 class="edu-degree">LL.M. Constitutional Law</h3>
+            <p class="edu-school">KLE College of Law</p>
           </article>
-          <article class="eg reveal rd-2">
-            <div class="eg-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="eg-degree">LL.B.</h3>
-            <p class="eg-school">Sheshadripuram Law College</p>
-            <p class="eg-years">2016 – 2019</p>
+          <article class="edu-card reveal rd-2">
+            <span class="edu-year">2016 – 2019</span>
+            <h3 class="edu-degree">LL.B.</h3>
+            <p class="edu-school">Sheshadripuram Law College</p>
           </article>
-          <article class="eg reveal rd-3">
-            <div class="eg-icon" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-            </div>
-            <h3 class="eg-degree">B.E. — Electronics</h3>
-            <p class="eg-school">Bangalore University</p>
-            <p class="eg-years">1990 – 1996</p>
+          <article class="edu-card reveal rd-3">
+            <span class="edu-year">1990 – 1996</span>
+            <h3 class="edu-degree">B.E. Electronics</h3>
+            <p class="edu-school">Bangalore University</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ CERTIFICATIONS ═══════════ -->
-    <section id="certifications" class="section sec-certs" aria-labelledby="cert-h">
+    <!-- ═══ CERTIFICATIONS ═══ -->
+    <section id="certifications" class="section" aria-labelledby="cert-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">05</span>
-          <p class="eyebrow" id="cert-h">Credentials</p>
-          <h2 class="sec-title">Certifications</h2>
-          <p class="sec-lead">Industry-recognized across security, cloud, and service management.</p>
+          <div>
+            <p class="eyebrow" id="cert-h">Credentials</p>
+            <h2 class="sec-title">Certifications</h2>
+          </div>
         </div>
-        <div class="cert-featured reveal">
-          <span class="cbadge">CISSP</span>
-          <span class="cbadge">CISA</span>
-          <span class="cbadge">PMP</span>
-          <span class="cbadge">ITIL Expert</span>
-          <span class="cbadge">AWS Solutions Architect</span>
+        <div class="cert-featured">
+          <div class="cf-badge reveal">
+            <div class="cfb-icon" aria-hidden="true">🛡️</div>
+            <span class="cfb-name">CISSP</span>
+            <span class="cfb-sub">ISC²</span>
+          </div>
+          <div class="cf-badge reveal rd-1">
+            <div class="cfb-icon" aria-hidden="true">🔍</div>
+            <span class="cfb-name">CISA</span>
+            <span class="cfb-sub">ISACA</span>
+          </div>
+          <div class="cf-badge reveal rd-2">
+            <div class="cfb-icon" aria-hidden="true">📊</div>
+            <span class="cfb-name">PMP</span>
+            <span class="cfb-sub">PMI</span>
+          </div>
+          <div class="cf-badge reveal rd-3">
+            <div class="cfb-icon" aria-hidden="true">⚙️</div>
+            <span class="cfb-name">ITIL Expert</span>
+            <span class="cfb-sub">Axelos</span>
+          </div>
+          <div class="cf-badge reveal rd-4">
+            <div class="cfb-icon" aria-hidden="true">☁️</div>
+            <span class="cfb-name">AWS SA</span>
+            <span class="cfb-sub">Amazon</span>
+          </div>
         </div>
-        <div class="cert-other reveal">
-          <span class="ctag">Google Cybersecurity Professional V2 (2025)</span>
-          <span class="ctag">Google Foundations of Cybersecurity (2025)</span>
-          <span class="ctag">Google Associate Cloud Engineer</span>
-          <span class="ctag">Scrum Master</span>
-          <span class="ctag">Paralegal Certificate</span>
-          <span class="ctag">Certificate in IPR</span>
-          <span class="ctag">PGCPM — IGNOU</span>
-          <span class="ctag">Diploma in IPR</span>
-          <span class="ctag">Certificate in Patent Procedures</span>
+        <div class="cert-more reveal">
+          <div class="cm-item">Google Cybersecurity Professional V2 <span class="cm-year">2025</span></div>
+          <div class="cm-item">Google Foundations of Cybersecurity <span class="cm-year">2025</span></div>
+          <div class="cm-item">Google Associate Cloud Engineer</div>
+          <div class="cm-item">Certified Scrum Master</div>
+          <div class="cm-item">Paralegal Certificate</div>
+          <div class="cm-item">Certificate in IPR</div>
+          <div class="cm-item">PGCPM — IGNOU</div>
+          <div class="cm-item">Diploma in IPR</div>
+          <div class="cm-item">Certificate in Patent Procedures</div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════ CONTACT ═══════════ -->
-    <section id="contact" class="section sec-contact" aria-labelledby="contact-h">
+    <!-- ═══ CONTACT ═══ -->
+    <section id="contact" class="section sec-alt" aria-labelledby="contact-h">
       <div class="container">
-        <div class="sec-label reveal">
+        <div class="sec-header reveal">
           <span class="sec-num" aria-hidden="true">06</span>
-          <p class="eyebrow" id="contact-h">Contact</p>
-          <h2 class="sec-title">Let's connect</h2>
-          <p class="sec-lead">Open to leadership roles, advisory engagements, and strategic discussions in infrastructure and cybersecurity.</p>
+          <div>
+            <p class="eyebrow" id="contact-h">Get in touch</p>
+            <h2 class="sec-title">Contact</h2>
+          </div>
         </div>
-
-        <div class="contact-grid reveal">
-
-          <!-- Email form -->
-          <div class="cf-wrap">
-            <h3 class="cf-title">Send a message</h3>
-            <p class="cf-sub">I'll reply directly to your email address.</p>
-
-            <div id="cf-ok" class="cf-msg cf-msg--ok" hidden role="status">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-              Message sent! I'll be in touch soon.
+        <div class="contact-grid">
+          <div class="contact-info reveal">
+            <p class="contact-intro">Open to senior IT leadership, Program Manager, and CISO-track roles globally. Let's connect.</p>
+            <div class="ci-row">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <a href="mailto:nayudu72y@gmail.com" class="ci-val">nayudu72y@gmail.com</a>
             </div>
-            <div id="cf-err" class="cf-msg cf-msg--err" hidden role="alert">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-              <span id="cf-err-txt">Something went wrong. Please email directly.</span>
+            <div class="ci-row">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <a href="tel:+919845386960" class="ci-val">+91 98453 86960</a>
             </div>
+            <div class="ci-row">
+              <div class="ci-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </div>
+              <a href="https://www.linkedin.com/in/nayudu/" target="_blank" rel="noopener" class="ci-val">linkedin.com/in/nayudu</a>
+            </div>
+          </div>
 
+          <div class="contact-form-wrap reveal rd-1">
             <form id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate>
               <input type="hidden" name="access_key" value="e1bd2ce7-66df-425b-9627-5a289a281ae8">
               <input type="checkbox" name="botcheck" style="display:none;visibility:hidden;position:absolute" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="ff-row">
                 <div class="ff">
-                  <label for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
-                  <input type="text" id="f-name" name="name" placeholder="John Smith" autocomplete="name" required>
+                  <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+                  <input type="text" id="f-name" name="name" placeholder="Your full name" autocomplete="name" required>
                 </div>
                 <div class="ff">
-                  <label for="f-email">Your email <span class="req" aria-hidden="true">*</span></label>
+                  <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
                   <input type="email" id="f-email" name="email" placeholder="you@company.com" autocomplete="email" required>
                 </div>
               </div>
@@ -453,67 +481,47 @@
               </div>
               <div class="ff">
                 <label for="f-msg">Message <span class="req" aria-hidden="true">*</span></label>
-                <textarea id="f-msg" name="message" rows="5" placeholder="Write your message here…" required></textarea>
+                <textarea id="f-msg" name="message" rows="5" placeholder="Your message…" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary btn-send" id="submit-btn">
-                <span class="btn-txt">Send message</span>
-                <span class="btn-arr" aria-hidden="true">→</span>
+
+              <div id="cf-ok" class="cf-msg cf-ok" hidden role="status">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Message sent! I'll reply shortly.
+              </div>
+              <div id="cf-err" class="cf-msg cf-err" hidden role="alert">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span id="cf-err-txt">Something went wrong. Please try again.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-submit" id="submit-btn">
+                <span class="btn-txt">Send Message</span>
+                <span class="btn-arr" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                </span>
                 <span class="btn-spin" hidden aria-hidden="true"></span>
               </button>
             </form>
           </div>
-
-          <!-- Info panel -->
-          <div class="ci-panel">
-            <h3 class="ci-title">Direct contact</h3>
-            <div class="ci-items">
-              <a href="mailto:nayudu72y@gmail.com" class="ci-row">
-                <span class="ci-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
-                <div><span class="ci-lbl">Email</span><span class="ci-val">nayudu72y@gmail.com</span></div>
-                <span class="ci-arr" aria-hidden="true">↗</span>
-              </a>
-              <a href="tel:+919845386960" class="ci-row">
-                <span class="ci-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l1.13-1.13a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
-                <div><span class="ci-lbl">Phone</span><span class="ci-val">+91 98453 86960</span></div>
-                <span class="ci-arr" aria-hidden="true">↗</span>
-              </a>
-              <a href="https://www.linkedin.com/in/nayudu/" class="ci-row" target="_blank" rel="noopener">
-                <span class="ci-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
-                <div><span class="ci-lbl">LinkedIn</span><span class="ci-val">linkedin.com/in/nayudu</span></div>
-                <span class="ci-arr" aria-hidden="true">↗</span>
-              </a>
-              <a href="Ramachandra_Latest.pdf" class="ci-row ci-row--hl" download="Ramachandra_Latest.pdf" target="_blank" rel="noopener">
-                <span class="ci-ico" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></span>
-                <div><span class="ci-lbl">Resume</span><span class="ci-val">Download PDF</span></div>
-                <span class="ci-arr" aria-hidden="true">↓</span>
-              </a>
-            </div>
-            <div class="avail-badge">
-              <span class="avail-dot" aria-hidden="true"></span>
-              Open to new opportunities
-            </div>
-          </div>
-
         </div>
       </div>
     </section>
 
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container ft-inner">
-      <p class="ft-copy">© <span id="yr">2025</span> N. Ramachandra</p>
-      <nav class="ft-nav" aria-label="Footer">
-        <a href="#about">Profile</a>
-        <a href="#experience">Experience</a>
-        <a href="#certifications">Certifications</a>
-        <a href="Ramachandra_Latest.pdf" download="Ramachandra_Latest.pdf" target="_blank" rel="noopener">CV</a>
-      </nav>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-brand">N. Ramachandra</span>
+        <span class="footer-creds">CISSP · CISA · PMP · ITIL Expert · AWS SA</span>
+        <span class="footer-copy">&copy; <span id="yr"></span></span>
+        <a href="Ramachandra_Latest.pdf" class="footer-cv" download="Ramachandra_Latest.pdf">Download CV</a>
+      </div>
     </div>
   </footer>
 
-  <button class="back-top" id="back-top" aria-label="Back to top" hidden>
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  <button class="back-top" id="back-top" hidden aria-label="Back to top">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
   <script src="script.js"></script>
