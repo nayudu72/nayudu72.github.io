@@ -328,7 +328,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   width: 240px; height: 240px; border-radius: 50%;
   background: linear-gradient(145deg, #0d2535 0%, #0b1e2d 50%, #080c10 100%);
   border: 1.5px solid var(--bdr2);
-  display: flex; align-items: center; justify-content: center;
   overflow: hidden; box-shadow: var(--sh-lg);
 }
 [data-theme="light"] .hero-photo {
@@ -340,12 +339,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--ac); letter-spacing: -0.04em;
   line-height: 1; user-select: none;
   text-shadow: 0 0 40px var(--ac-g);
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
 }
 .photo-img {
-  position: absolute; inset: 0;
   width: 100%; height: 100%;
   object-fit: cover; object-position: center top;
-  border-radius: 50%; display: block;
+  display: block;
 }
 
 /* Scroll indicator */
@@ -782,6 +782,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hn-line--indent { padding-left: 0; }
   .hero-photo-wrap { width: 200px; height: 200px; }
   .hero-photo { width: 200px; height: 200px; }
+  .hero-photo .photo-img { width: 200px; height: 200px; }
   .photo-initials { font-size: 4.5rem; }
   .about-grid { grid-template-columns: 1fr; gap: 2rem; }
   .value-row { grid-template-columns: 1fr; }
@@ -809,6 +810,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .hero-name { font-size: clamp(2.8rem, 10vw, 5rem); }
   .hero-photo-wrap { width: 170px; height: 170px; }
   .hero-photo { width: 170px; height: 170px; }
+  .hero-photo .photo-img { width: 170px; height: 170px; }
   .photo-initials { font-size: 3.8rem; }
   .comp-grid { grid-template-columns: 1fr; }
   .edu-grid  { grid-template-columns: 1fr; }

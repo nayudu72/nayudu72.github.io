@@ -195,26 +195,7 @@
     msgShow(cfOk, false); msgShow(cfErr, false);
     if (!validate()) return;
 
-    /* If access key not configured yet, fall back to mailto */
-    var keyInput = form.querySelector('input[name="access_key"]');
-    if (keyInput && keyInput.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-      var n  = (form.querySelector('[name="name"]')    || {}).value || '';
-      var s  = (form.querySelector('[name="subject"]') || {}).value || 'Message from ' + n.trim();
-      var m  = (form.querySelector('[name="message"]') || {}).value || '';
-      window.location.href =
-        'mailto:nayudu72y@gmail.com?subject=' + encodeURIComponent(s.trim() || 'Message from ' + n.trim()) +
-        '&body=' + encodeURIComponent(m.trim() + '\n\n— ' + n.trim());
-      return;
-    }
-
     setLoading(true);
-
-    /* Ensure subject has a value */
-    var subEl = form.querySelector('[name="subject"]');
-    var nameEl = form.querySelector('[name="name"]');
-    if (subEl && !subEl.value.trim()) {
-      subEl.value = 'Message from ' + ((nameEl && nameEl.value.trim()) || 'visitor');
-    }
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
@@ -227,13 +208,13 @@
           form.reset();
           setTimeout(function () { msgShow(cfOk, false); }, 7000);
         } else {
-          if (cfErrTxt) cfErrTxt.textContent = data.message || 'Something went wrong.';
+          if (cfErrTxt) cfErrTxt.textContent = data.message || 'Something went wrong. Please try again.';
           msgShow(cfErr, true);
         }
       })
       .catch(function () {
-        if (cfErrTxt) cfErrTxt.textContent = 'Network error. Please email nayudu72y@gmail.com directly.';
-        msgShow(cfErr, true);
+        /* AJAX failed — fall back to native form POST */
+        form.submit();
       })
       .finally(function () { setLoading(false); });
   });
