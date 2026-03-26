@@ -1,77 +1,82 @@
 (function () {
   'use strict';
 
-  /* ---- Element references ---- */
-  var header       = document.getElementById('header');
-  var navToggle    = document.getElementById('nav-toggle');
-  var nav          = document.getElementById('site-nav');
-  var backdrop     = document.getElementById('nav-backdrop');
-  var themeToggle  = document.getElementById('theme-toggle');
-  var backTop      = document.getElementById('back-top');
-  var scrollBar    = document.querySelector('.scroll-progress');
-  var footerYear   = document.getElementById('footer-year');
+  /* ─── References ─── */
+  var header      = document.getElementById('header');
+  var burger      = document.getElementById('nav-burger');
+  var nav         = document.getElementById('primary-nav');
+  var veil        = document.getElementById('nav-veil');
+  var themeBtn    = document.getElementById('theme-btn');
+  var backTop     = document.getElementById('back-top');
+  var scrollBar   = document.getElementById('scroll-bar');
+  var yearEl      = document.getElementById('yr');
+  var form        = document.getElementById('contact-form');
+  var submitBtn   = document.getElementById('submit-btn');
+  var cfOk        = document.getElementById('cf-ok');
+  var cfErr       = document.getElementById('cf-err');
+  var cfErrTxt    = document.getElementById('cf-err-txt');
 
-  /* ============================================================
-     THEME — persist + respect system preference
-     ============================================================ */
-  var stored = localStorage.getItem('nr-theme');
-  if (stored === 'dark' || stored === 'light') {
-    document.documentElement.setAttribute('data-theme', stored);
-  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    document.documentElement.setAttribute('data-theme', 'dark');
+  /* ═══════════════════════════════════
+     THEME
+     ═══════════════════════════════════ */
+  var savedTheme = localStorage.getItem('nr-theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else {
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
   }
 
-  themeToggle && themeToggle.addEventListener('click', function () {
-    var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  themeBtn && themeBtn.addEventListener('click', function () {
+    var cur  = document.documentElement.getAttribute('data-theme');
+    var next = cur === 'dark' ? 'light' : 'dark';
     document.documentElement.setAttribute('data-theme', next);
     localStorage.setItem('nr-theme', next);
   });
 
-  /* ============================================================
+  /* ═══════════════════════════════════
      MOBILE NAV
-     ============================================================ */
-  function setMenuOpen(open) {
+     ═══════════════════════════════════ */
+  function openMenu(open) {
     if (!header) return;
     header.classList.toggle('nav-open', open);
     document.body.classList.toggle('menu-open', open);
-    navToggle && navToggle.setAttribute('aria-expanded', String(open));
-    if (backdrop) {
-      backdrop.classList.toggle('is-visible', open);
-      backdrop.setAttribute('aria-hidden', String(!open));
-    }
+    burger && burger.setAttribute('aria-expanded', String(open));
+    if (veil) { veil.classList.toggle('is-vis', open); veil.setAttribute('aria-hidden', String(!open)); }
   }
 
-  navToggle  && navToggle.addEventListener('click', function () { setMenuOpen(!header.classList.contains('nav-open')); });
-  backdrop   && backdrop.addEventListener('click', function () { setMenuOpen(false); });
+  burger && burger.addEventListener('click', function () {
+    openMenu(!header.classList.contains('nav-open'));
+  });
+  veil   && veil.addEventListener('click',   function () { openMenu(false); });
 
   nav && nav.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () {
-      if (window.innerWidth <= 768) setMenuOpen(false);
+      if (window.innerWidth <= 768) openMenu(false);
     });
   });
 
   window.addEventListener('resize', function () {
-    if (window.innerWidth > 768) setMenuOpen(false);
+    if (window.innerWidth > 768) openMenu(false);
   }, { passive: true });
 
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && header && header.classList.contains('nav-open')) setMenuOpen(false);
+    if (e.key === 'Escape' && header && header.classList.contains('nav-open')) openMenu(false);
   });
 
-  /* ============================================================
-     SCROLL: header shadow + progress bar + back-to-top
-     ============================================================ */
+  /* ═══════════════════════════════════
+     SCROLL — header / progress / back-top
+     ═══════════════════════════════════ */
   function onScroll() {
     var y   = window.scrollY;
     var doc = document.documentElement;
     var max = doc.scrollHeight - doc.clientHeight;
     var pct = max > 0 ? Math.round((y / max) * 100) : 0;
 
-    header    && header.classList.toggle('scrolled', y > 50);
+    header   && header.classList.toggle('scrolled', y > 60);
     if (scrollBar) { scrollBar.style.width = pct + '%'; scrollBar.setAttribute('aria-valuenow', String(pct)); }
     if (backTop) backTop.hidden = y < 400;
   }
-
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
@@ -79,182 +84,163 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  /* ============================================================
-     SMOOTH SCROLL for internal anchors
-     ============================================================ */
+  /* ═══════════════════════════════════
+     SMOOTH SCROLL — internal anchors
+     ═══════════════════════════════════ */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var id     = link.getAttribute('href').slice(1);
       var target = document.getElementById(id);
       if (!target) return;
       e.preventDefault();
-      var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 64;
-      var top = target.getBoundingClientRect().top + window.scrollY - headerH - 8;
+      var hh  = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--hh')) || 62;
+      var top = target.getBoundingClientRect().top + window.scrollY - hh - 8;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
   });
 
-  /* ============================================================
-     SCROLL-SPY — active nav link
-     ============================================================ */
-  var navLinks  = document.querySelectorAll('.nav-link[data-section]');
-  var sectionIds = ['hero', 'profile', 'competencies', 'experience', 'education', 'certifications', 'contact'];
-  var sectionEls = sectionIds.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  /* ═══════════════════════════════════
+     SCROLL SPY — active nav link
+     ═══════════════════════════════════ */
+  var navLinks  = document.querySelectorAll('.nl[data-s]');
+  var sids      = ['hero','about','competencies','experience','education','certifications','contact'];
+  var sEls      = sids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
 
-  function updateActiveNav() {
-    var mid = window.scrollY + window.innerHeight * 0.3;
+  function spyUpdate() {
+    var mid     = window.scrollY + window.innerHeight * 0.3;
     var current = null;
-    for (var i = sectionEls.length - 1; i >= 0; i--) {
-      if (sectionEls[i].offsetTop <= mid) { current = sectionEls[i].id; break; }
+    for (var i = sEls.length - 1; i >= 0; i--) {
+      if (sEls[i].offsetTop <= mid) { current = sEls[i].id; break; }
     }
-    navLinks.forEach(function (link) {
-      link.classList.toggle('is-active', !!(current && link.getAttribute('data-section') === current));
+    navLinks.forEach(function (l) {
+      l.classList.toggle('active', !!(current && l.getAttribute('data-s') === current));
     });
   }
+  window.addEventListener('scroll', spyUpdate, { passive: true });
+  spyUpdate();
 
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
-
-  /* ============================================================
-     SCROLL REVEAL (IntersectionObserver)
-     ============================================================ */
+  /* ═══════════════════════════════════
+     SCROLL REVEAL
+     ═══════════════════════════════════ */
   var reveals = document.querySelectorAll('.reveal');
   if (reveals.length && 'IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+        if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -5% 0px', threshold: 0.02 });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.02 });
     reveals.forEach(function (el) { io.observe(el); });
   } else {
-    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+    reveals.forEach(function (el) { el.classList.add('vis'); });
   }
 
-  /* ============================================================
+  /* ═══════════════════════════════════
      FOOTER YEAR
-     ============================================================ */
-  if (footerYear) footerYear.textContent = String(new Date().getFullYear());
+     ═══════════════════════════════════ */
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* ============================================================
-     RESUME DOWNLOAD — JS blob method for sandbox/iframe compat
-     ============================================================ */
+  /* ═══════════════════════════════════
+     RESUME DOWNLOAD — blob + fallback
+     ═══════════════════════════════════ */
   document.querySelectorAll('a[download]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       e.preventDefault();
-      var href     = link.getAttribute('href');
-      var filename = link.getAttribute('download') || (href && href.split('/').pop()) || 'Resume.pdf';
+      var href = link.getAttribute('href');
+      var name = link.getAttribute('download') || (href && href.split('/').pop()) || 'Resume.pdf';
       if (!href) return;
       fetch(href)
-        .then(function (res) { if (!res.ok) throw new Error('fetch failed'); return res.blob(); })
+        .then(function (r) { if (!r.ok) throw new Error('fail'); return r.blob(); })
         .then(function (blob) {
           var url = URL.createObjectURL(blob);
           var a   = document.createElement('a');
-          a.href = url; a.download = filename;
-          document.body.appendChild(a);
-          a.click();
-          setTimeout(function () { URL.revokeObjectURL(url); document.body.removeChild(a); }, 300);
+          a.href = url; a.download = name;
+          document.body.appendChild(a); a.click();
+          setTimeout(function () { URL.revokeObjectURL(url); a.remove(); }, 300);
         })
         .catch(function () { window.open(href, '_blank', 'noopener,noreferrer'); });
     });
   });
 
-  /* ============================================================
-     CONTACT FORM — Web3Forms API submission
-     ============================================================ */
-  var contactForm   = document.getElementById('contact-form');
-  var submitBtn     = document.getElementById('submit-btn');
-  var formSuccess   = document.getElementById('form-success');
-  var formError     = document.getElementById('form-error');
-  var formErrorMsg  = document.getElementById('form-error-msg');
+  /* ═══════════════════════════════════
+     CONTACT FORM — Web3Forms
+     ═══════════════════════════════════ */
+  function msgShow(el, show) { if (el) el.hidden = !show; }
 
-  function setSubmitting(loading) {
+  function setLoading(on) {
     if (!submitBtn) return;
-    var label   = submitBtn.querySelector('.btn-label');
-    var arrow   = submitBtn.querySelector('.btn-arrow');
-    var spinner = submitBtn.querySelector('.btn-spinner');
-    submitBtn.disabled = loading;
-    if (label)   label.textContent  = loading ? 'Sending…' : 'Send message';
-    if (arrow)   arrow.hidden       = loading;
-    if (spinner) spinner.hidden     = !loading;
+    var txt  = submitBtn.querySelector('.btn-txt');
+    var arr  = submitBtn.querySelector('.btn-arr');
+    var spin = submitBtn.querySelector('.btn-spin');
+    submitBtn.disabled = on;
+    if (txt)  txt.textContent = on ? 'Sending…' : 'Send message';
+    if (arr)  arr.hidden = on;
+    if (spin) spin.hidden = !on;
   }
 
-  function showField(el, visible) {
-    if (el) el.hidden = !visible;
-  }
-
-  function validateForm(form) {
-    var valid  = true;
-    var fields = form.querySelectorAll('input[required], textarea[required]');
-    fields.forEach(function (f) {
-      f.classList.remove('is-invalid');
-      if (!f.value.trim()) { f.classList.add('is-invalid'); valid = false; }
+  function validate() {
+    var ok = true;
+    form.querySelectorAll('[required]').forEach(function (f) {
+      f.classList.remove('invalid');
+      if (!f.value.trim()) { f.classList.add('invalid'); ok = false; }
     });
-    var emailEl = form.querySelector('input[type="email"]');
-    if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value)) {
-      emailEl.classList.add('is-invalid'); valid = false;
+    var em = form.querySelector('input[type="email"]');
+    if (em && em.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value)) {
+      em.classList.add('invalid'); ok = false;
     }
-    return valid;
+    return ok;
   }
 
-  contactForm && contactForm.addEventListener('submit', function (e) {
+  form && form.addEventListener('submit', function (e) {
     e.preventDefault();
+    msgShow(cfOk, false); msgShow(cfErr, false);
+    if (!validate()) return;
 
-    showField(formSuccess, false);
-    showField(formError, false);
-
-    if (!validateForm(contactForm)) return;
-
-    /* Check if access key has been configured */
-    var accessKeyInput = contactForm.querySelector('input[name="access_key"]');
-    if (accessKeyInput && accessKeyInput.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
-      /* Fallback: open mailto if access key not yet set */
-      var name    = (contactForm.querySelector('[name="name"]')    || {}).value || '';
-      var subject = (contactForm.querySelector('[name="subject"]') || {}).value || ('Message from ' + name.trim());
-      var message = (contactForm.querySelector('[name="message"]') || {}).value || '';
-      var sub     = encodeURIComponent(subject.trim() || 'Message from ' + name.trim());
-      var body    = encodeURIComponent(message.trim() + '\n\n— ' + name.trim());
-      window.location.href = 'mailto:nayudu72y@gmail.com?subject=' + sub + '&body=' + body;
+    /* If access key not configured yet, fall back to mailto */
+    var keyInput = form.querySelector('input[name="access_key"]');
+    if (keyInput && keyInput.value === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+      var n  = (form.querySelector('[name="name"]')    || {}).value || '';
+      var s  = (form.querySelector('[name="subject"]') || {}).value || 'Message from ' + n.trim();
+      var m  = (form.querySelector('[name="message"]') || {}).value || '';
+      window.location.href =
+        'mailto:nayudu72y@gmail.com?subject=' + encodeURIComponent(s.trim() || 'Message from ' + n.trim()) +
+        '&body=' + encodeURIComponent(m.trim() + '\n\n— ' + n.trim());
       return;
     }
 
-    setSubmitting(true);
+    setLoading(true);
 
-    /* Build subject line */
-    var subjectEl    = contactForm.querySelector('[name="subject"]');
-    var nameEl       = contactForm.querySelector('[name="name"]');
-    var subjectValue = (subjectEl && subjectEl.value.trim()) || 'Message from ' + ((nameEl && nameEl.value.trim()) || 'visitor');
-    if (subjectEl) subjectEl.value = subjectValue;
-
-    var formData = new FormData(contactForm);
+    /* Ensure subject has a value */
+    var subEl = form.querySelector('[name="subject"]');
+    var nameEl = form.querySelector('[name="name"]');
+    if (subEl && !subEl.value.trim()) {
+      subEl.value = 'Message from ' + ((nameEl && nameEl.value.trim()) || 'visitor');
+    }
 
     fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: formData
+      body: new FormData(form)
     })
-      .then(function (res) { return res.json(); })
+      .then(function (r) { return r.json(); })
       .then(function (data) {
         if (data.success) {
-          showField(formSuccess, true);
-          contactForm.reset();
-          /* Auto-hide success after 6s */
-          setTimeout(function () { showField(formSuccess, false); }, 6000);
+          msgShow(cfOk, true);
+          form.reset();
+          setTimeout(function () { msgShow(cfOk, false); }, 7000);
         } else {
-          if (formErrorMsg) formErrorMsg.textContent = data.message || 'Something went wrong. Please email directly.';
-          showField(formError, true);
+          if (cfErrTxt) cfErrTxt.textContent = data.message || 'Something went wrong.';
+          msgShow(cfErr, true);
         }
       })
       .catch(function () {
-        if (formErrorMsg) formErrorMsg.textContent = 'Network error. Please email nayudu72y@gmail.com directly.';
-        showField(formError, true);
+        if (cfErrTxt) cfErrTxt.textContent = 'Network error. Please email nayudu72y@gmail.com directly.';
+        msgShow(cfErr, true);
       })
-      .finally(function () {
-        setSubmitting(false);
-      });
+      .finally(function () { setLoading(false); });
   });
 
-  /* Clear validation errors on input */
-  contactForm && contactForm.querySelectorAll('input, textarea').forEach(function (field) {
-    field.addEventListener('input', function () { field.classList.remove('is-invalid'); });
+  /* Clear invalid state on input */
+  form && form.querySelectorAll('input, textarea').forEach(function (f) {
+    f.addEventListener('input', function () { f.classList.remove('invalid'); });
   });
 
 })();
